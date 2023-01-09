@@ -1,9 +1,9 @@
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)<br>
 # **Team Profile Generator**
 
-## ****Currently Under Construction***
-
 ### Welcome!&nbsp;&nbsp;Looking for a way to auto generate an *Our Team Page* with just simple input?&nbsp;&nbsp;Here it is.&nbsp;&nbsp;This dynamic application will auto process an HTML file based on input provided.&nbsp;&nbsp;Soon you'll have a page to introduce *each member* of your team.<br><br>
+
+## ****Currently Under Construction***
 
 ### **Table of contents:**
 
@@ -52,6 +52,8 @@ Once the above installations are complete, to initalize the application, on the 
 ```shell
 node index.js
 ```
+
+-Video and Screenshots *coming soon*.
 
 ## Tests:
 
