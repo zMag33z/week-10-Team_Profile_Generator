@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    position: relative;
+    min-height: 100vh;
+
+}
+
+h1{
+    padding: 20px;
+}
+
+h2{
+    font-size: 1.8em;
+}
+
+h3{
+    font-size: 1.5em;
+    display: inline-block;
+}
+
+p{
+    font-size: 1.2em;
+    font-weight: 520;
+}

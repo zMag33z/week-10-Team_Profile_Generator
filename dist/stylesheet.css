@@ -1,0 +1,74 @@
+
+.container{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-bottom: 120px;
+}
+
+.mysize{
+    font-size: 200px;
+}
+
+
+
+.substitute-IMG{
+    position: absolute;
+    right: 5%;
+    bottom: 1%;
+    opacity: .5;
+
+}
+
+.card{
+    display: inline-block;
+    position: relative;
+    width: 320px;
+    height: 320px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    padding: 1em;
+    margin: 20px auto;
+}
+
+.contact-item{
+    display: inline-block;
+}
+
+.contact-icon{
+    font-size: 2em;
+    color: black;
+    margin-right: 20px;
+}
+
+.contacts{
+    float: left;
+}
+
+.information{
+    height: 180px;
+    width: 60%;
+    line-height: 45px;
+    padding-top: 20px;
+}
+
+.team-mission{
+    max-width: 1280px;
+    padding: 20px;
+    margin: auto;
+}
+
+footer{
+    font-size: .9em;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+}

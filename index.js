@@ -16,7 +16,7 @@ const Intern = require ('./lib/intern');
 
 
 
-// Flow through variables.
+
 const team = [];// function to add team in order.
 
 
@@ -45,14 +45,29 @@ function employeeInfo(employeeRole){
             name: 'name',
             message: `Enter ${employeeRole}'s name.\n`,
             type: 'input',
-            // validate:
+            validate: input => {
+                while(input.length === 0){
+                    console.log(`\n\x1b[41m\x1b[90m Input Required \x1b[0m\x1b[0m\n`);
+                    return false;
+                }
+                return true;
+            }
         }
         ,
         {
             name: 'id',
             message: `Enter ${employeeRole}'s id #.\n`,
             type: 'input',
-            // validate:
+            filter: input => {if(input === '' | ' ') {input = 0} parseInt(input)},            // where i left off
+            validate: input => {
+                parseInt(input);
+                while(input === 0 || isNaN(input)){
+                    console.log(`\n\x1b[41m\x1b[90m Enter a number \x1b[0m\x1b[0m\n`);
+
+                    return false;
+                }
+                return true;
+            }
         }
         ,
         {
@@ -86,6 +101,9 @@ function employeeInfo(employeeRole){
             // validate:
         }
     ]).then(input => {
+
+        console.log(parseInt(input.id));                // where i left off with this variable
+
         switch(employeeRole){
             case 'Manager':{
                 const manager = new Manager(input.name, input.id, input.email, input.officeNumber);
@@ -104,7 +122,7 @@ function employeeInfo(employeeRole){
             }
         }
 
-        console.log(team);
+
 
         continueADDorBUILD();
     });

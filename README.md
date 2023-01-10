@@ -68,7 +68,7 @@ For any questions or additional feedback.
 Email:&nbsp;&nbsp;[mag33@gmail.com](mag33@gmail.com)
 ## Resources:
 
-[node.js](https://nodejs.org/en/docs/)<br>[inquirer](https://www.npmjs.com/package/inquirer?activeTab=readme)<br>[jest](https://jestjs.io/)<br>[Google](https://www.google.com)
+[node.js](https://nodejs.org/en/docs/)<br>[inquirer](https://www.npmjs.com/package/inquirer?activeTab=readme)<br>[jest](https://jestjs.io/)<br>[Font Awesome](https://fontawesome.com/)<br>[Google](https://www.google.com)
 
 ## Location:
 
