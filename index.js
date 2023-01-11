@@ -13,7 +13,7 @@ const fs = require('fs');
 const Manager = require('./lib/manager');
 const Engineer = require ('./lib/engineer');
 const Intern = require ('./lib/intern');
-
+const generateHTML = require('./src/generateHTML');
 
 
 
@@ -58,16 +58,24 @@ function employeeInfo(employeeRole){
             name: 'id',
             message: `Enter ${employeeRole}'s id #.\n`,
             type: 'input',
-            filter: input => {if(input === '' | ' ') {input = 0} parseInt(input)},            // where i left off
-            validate: input => {
-                parseInt(input);
-                while(input === 0 || isNaN(input)){
-                    console.log(`\n\x1b[41m\x1b[90m Enter a number \x1b[0m\x1b[0m\n`);
+            // filter: input => {if(input === '' | ' ') {input = 0} parseInt(input)},            // where i left off
+            // validate: input => {
+            //     parseInt(input);
+            //     while(input === 0 || isNaN(input)){
+            //         console.log(`\n\x1b[41m\x1b[90m Enter a number \x1b[0m\x1b[0m\n`);
 
-                    return false;
-                }
-                return true;
-            }
+            //         return false;
+            //     }
+            //     return true;
+            // }
+        }
+        ,
+        {
+            name: 'department',
+            when: () => employeeRole === 'Engineer',
+            message: `Select ${employeeRole}'s department field type.`,
+            type: 'list',
+            choices: ['Front-End development', 'Back-End development'],
         }
         ,
         {
@@ -96,22 +104,24 @@ function employeeInfo(employeeRole){
         {
             name: 'school',
             when: () => employeeRole === 'Intern',
-            message: `Enter ${employeeRole}'s school name.\n`,
+            message: `Enter ${employeeRole}'s school colloquial name. (ie: abbreviated initals/name for school.)\n`,
             type: 'input',
             // validate:
         }
     ]).then(input => {
 
         console.log(parseInt(input.id));                // where i left off with this variable
+        console.log(team);
 
-        switch(employeeRole){
+
+        switch(employeeRole){           // try to concat a string and get rid of switch statement.
             case 'Manager':{
                 const manager = new Manager(input.name, input.id, input.email, input.officeNumber);
-                team.push(manager);
+                team.push(manager);     // INSTEAD of push.. function to sort.
                 break;
             }
             case 'Engineer':{
-                const engineer = new Engineer(input.name, input.id, input.email, input.gitHub);
+                const engineer = new Engineer(input.name, input.id, input.department, input.email, input.gitHub);
                 team.push(engineer);
                 break;
             }
@@ -121,9 +131,6 @@ function employeeInfo(employeeRole){
                 break;
             }
         }
-
-
-
         continueADDorBUILD();
     });
 }
@@ -138,6 +145,11 @@ function continueADDorBUILD(){
             choices: [`Yes - Add an 'Engineer'`, `Yes - Add an 'Intern'`, 'No - Finished Building'],
         }        
     ]).then(input => {
+
+
+        // if(input.select === 'No - Finished Building'){
+        //     buildTeamPage()
+        // }else{ switch }
         switch(input.select){
 
             case `Yes - Add an 'Engineer'`:{
@@ -153,15 +165,18 @@ function continueADDorBUILD(){
                 break;
             }
         }
-        let employeeRole = input.select;
+
         employeeInfo(employeeRole);
 
 
     });    
 }
 
+//async to wait til no selected
+function compileTeam(){
 
-function buildTeamPage(){
+
+    // generateHTML.
 
 }
 

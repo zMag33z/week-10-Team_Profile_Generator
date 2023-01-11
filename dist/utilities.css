@@ -4,18 +4,30 @@
     padding: 0;
 }
 
-html, body{
-    position: relative;
+/*parent to footer*/
+body{
     min-height: 100vh;
+    position: relative;
+    padding: 0 5px;
+}
 
+/*color scheme*/
+:root{
+    --fontNcircle: rgb(70, 70, 70);
+    --main-info: rgb(234, 234, 234);
+    --info-bg: #ccc;
+    --info-border: grey;
 }
 
 h1{
-    padding: 20px;
+    padding: 15px 20px;
 }
 
 h2{
+    border-bottom: solid var(--info-border);
+    background-color: var(--info-bg);
     font-size: 1.8em;
+    padding: 12px 15px;
 }
 
 h3{
@@ -25,5 +37,5 @@ h3{
 
 p{
     font-size: 1.2em;
-    font-weight: 520;
+    font-weight: bold;
 }
