@@ -1,4 +1,4 @@
-//Welcome
+// Welcome
 console.log(`\x1b[33m
     Please ensure all information is correct before page BUILD.
     If information is incorrect after page BUILD.
@@ -46,7 +46,7 @@ const notIDResetValue = input => {
 };
 
 const emailAddress = input => {
-    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;     // future note: how to test if real email.
     let trueEmail = includes.test(input);
 
     while(!trueEmail){
@@ -57,7 +57,7 @@ const emailAddress = input => {
 }
 
 const notAnEmail = input => {
-    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;     // also i suppose run to function so matching variables reduced
     let trueEmail = includes.test(input);
 
     if(!trueEmail){
@@ -67,7 +67,7 @@ const notAnEmail = input => {
 }
 
 const numberOFFICE = input => {
-    let numeric = /^-?\d+$/.test(input);
+    let numeric = /^-?\d+$/.test(input);        //reduce matching
     let negative = input <= 0;
 
     while(!numeric || negative){
@@ -78,7 +78,7 @@ const numberOFFICE = input => {
 };
 
 const isNAN = input => {
-    let numeric = /^-?\d+$/.test(input);
+    let numeric = /^-?\d+$/.test(input);        //reduce matching
     let negative = input <= 0;
 
     if(!numeric || negative){
@@ -88,7 +88,7 @@ const isNAN = input => {
 }
 
 /* Future note: get rid of array. */
-const team = [];// function to add team in order.
+const team = [];// function to add team in order.  try generator function with yield
 
 
 
@@ -101,7 +101,7 @@ function startBuilding(){
         }
     ]).then((input) => {
         if(input.start === false){
-            console.log(`\n\x1b[41m\x1b[30m Closing application. \x1b[0m\x1b[0m\n`);
+            console.log(`\n\x1b[41m\x1b[30m Closing application \x1b[0m\x1b[0m\n`);
             return false;
         }
         let employeeRole = 'Manager';
@@ -164,41 +164,20 @@ function employeeInfo(employeeRole){
         {
             name: 'school',
             when: () => employeeRole === 'Intern',
-            message: `Enter ${employeeRole}'s school colloquial name. (ie: abbreviated initals/name for school.)\n`,
+            message: `Enter ${employeeRole}'s school colloquial name.\n (for more information visit: \x1b[34mhttps://en.wikipedia.org/wiki/List_of_colloquial_names_for_universities_and_colleges_in_the_United_States\x1b[0m)\n`,
             type: 'input',
             validate: requireInput,
         }
     ]).then(input => {
 
-        // trying to concat strings for all and get rid of switch statement.
-        // let information = [];
-        // let keys = Object.keys(input);
-        // keys.forEach( key => {
-        //     let info = `input.${key}`;
-        //     information.push(info);
-        // });
+        let gatheredInfo = Object.values(input);// gathering only values input by user
 
-        //goes with  const manager = new Manager(`${information}`); need to drop strings.
-        //prints manager's name: 'input.name,input.id,input.email,input.officeNumber'
-        // console.log(information);
+        const thisEmployee = eval(`new ${employeeRole}(...gatheredInfo)`);// assigns it to proper object depending on user choice
 
-        switch(employeeRole){
-            case 'Manager':{
-                const manager = new Manager(input.name,input.id,input.email,input.officeNumber);
-                team.push(manager);
-                break;
-            }
-            case 'Engineer':{
-                const engineer = new Engineer(input.name, input.id, input.department, input.email, input.gitHub);
-                team.push(engineer);
-                break;
-            }
-            case 'Intern':{
-                const intern = new Intern(input.name, input.id, input.email, input.school);
-                team.push(intern);
-                break;
-            }
-        }
+        team.push(thisEmployee);
+
+        console.log(team);
+
         continueADDorBUILD();
     });
 }
@@ -208,7 +187,7 @@ function continueADDorBUILD(){
     inquirer.prompt([
         {
             name: `select`,
-            message: `Would you like to continue building your team?  Please select an option.\n`,
+            message: `Would you like to continue building your team?  Please select an option.`,
             type: 'list',
             choices: [`Yes - Add an 'Engineer'`, `Yes - Add an 'Intern'`, 'No - Finished Building'],
         }        
