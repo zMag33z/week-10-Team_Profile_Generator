@@ -5,13 +5,14 @@ console.log(`\x1b[33m
     You will have to start from the beginning.
     \x1b[0m`);
 
+
 // Requirements
 const inquirer = require('inquirer');
-const fs = require('fs');
 const Manager = require('./lib/manager');
 const Engineer = require ('./lib/engineer');
 const Intern = require ('./lib/intern');
-const generateHTML = require('./src/generateHTML');
+const generateTeamCard = require('./src/generateHTML');
+
 
 // Validate and Filter functions
 const requireInput = input => {
@@ -86,10 +87,6 @@ const isNAN = input => {
     }
     return input;
 }
-
-/* Future note: get rid of array. */
-const team = [];// function to add team in order.  try generator function with yield
-
 
 
 function startBuilding(){
@@ -169,15 +166,9 @@ function employeeInfo(employeeRole){
             validate: requireInput,
         }
     ]).then(input => {
-
-        let gatheredInfo = Object.values(input);// gathering only values input by user
-
-        const thisEmployee = eval(`new ${employeeRole}(...gatheredInfo)`);// assigns it to proper object depending on user choice
-
-        team.push(thisEmployee);
-
-        console.log(team);
-
+        let thisEmployeeInfo = Object.values(input);// gathering only values input by user
+        const thisEmployee = eval(`new ${employeeRole}(...thisEmployeeInfo)`);// assigns to proper employee extended object depending on user choice.  eval() executes a string if value is an expression.
+        generateTeamCard(thisEmployee, employeeRole);
         continueADDorBUILD();
     });
 }
@@ -193,7 +184,7 @@ function continueADDorBUILD(){
         }        
     ]).then(input => {
 
-        switch(input.select){
+        switch(input.select){       // used switch because switching input value out for new value.
             case `Yes - Add an 'Engineer'`:{
                 input.select = 'Engineer';
                 break;
@@ -203,17 +194,13 @@ function continueADDorBUILD(){
                 break;
             }
             case 'No - Finished Building':{
-                input.select = 'BUILD';
-                break;
+                console.log('Building Team Now');
+                return myGenerator;
             }
         }
 
-        if(input.select == 'BUILD'){
-            generateHTML(team);
-        }else{
-            let employeeRole = input.select;
-            employeeInfo(employeeRole);
-        }
+        const employeeRole = input.select;
+        employeeInfo(employeeRole);
     });    
 }
 
