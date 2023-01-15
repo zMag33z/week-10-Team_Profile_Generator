@@ -11,7 +11,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/manager');
 const Engineer = require ('./lib/engineer');
 const Intern = require ('./lib/intern');
-const generateTeamCard = require('./src/generateHTML');
+const generateHTML = require('./src/generateHTML');
 
 
 // Validate and Filter functions
@@ -89,6 +89,10 @@ const isNAN = input => {
 }
 
 
+// Gathered team.
+const ALLroledTeamMembers = [];
+
+
 function startBuilding(){
     inquirer.prompt([
         {
@@ -101,7 +105,7 @@ function startBuilding(){
             console.log(`\n\x1b[41m\x1b[30m Closing application \x1b[0m\x1b[0m\n`);
             return false;
         }
-        let employeeRole = 'Manager';
+        let employeeRole = 'Manager';   // Should incorporate more manager roles.  Not all companies have one manager or even a manager at all.  Should set out to be more for each client needs not just one based group.
         employeeInfo(employeeRole);
     });
 }
@@ -166,10 +170,10 @@ function employeeInfo(employeeRole){
             validate: requireInput,
         }
     ]).then(input => {
-        let thisEmployeeInfo = Object.values(input);// gathering only values input by user
-        const thisEmployee = eval(`new ${employeeRole}(...thisEmployeeInfo)`);// assigns to proper employee extended object depending on user choice.  eval() executes a string if value is an expression.
-        generateTeamCard(thisEmployee, employeeRole);
-        continueADDorBUILD();
+            let thisEmployeeInfo = Object.values(input);// gathering only values input by user
+            const thisEmployee = eval(`new ${employeeRole}(...thisEmployeeInfo)`);// label each employee with a class name by role.  (eval() executes a string if value is an expression.)
+            ALLroledTeamMembers.push(thisEmployee);
+            continueADDorBUILD();
     });
 }
 
@@ -180,26 +184,25 @@ function continueADDorBUILD(){
             name: `select`,
             message: `Would you like to continue building your team?  Please select an option.`,
             type: 'list',
-            choices: [`Yes - Add an 'Engineer'`, `Yes - Add an 'Intern'`, 'No - Finished Building'],
+            choices: [`Yes - Add an 'Engineer'`, `Yes - Add an 'Intern'`, `No - Finished Building`],
         }        
     ]).then(input => {
+        let employeeRole = input.select;
 
-        switch(input.select){       // used switch because switching input value out for new value.
+        switch(employeeRole){       // used switch because switching input value out for new value.
             case `Yes - Add an 'Engineer'`:{
-                input.select = 'Engineer';
+                employeeRole = 'Engineer';
                 break;
             }
             case `Yes - Add an 'Intern'`:{
-                input.select = 'Intern';
+                employeeRole = 'Intern';
                 break;
             }
-            case 'No - Finished Building':{
-                console.log('Building Team Now');
-                return myGenerator;
+            case `No - Finished Building`:{
+                // employeeRole = 'APP';
+                return generateHTML(ALLroledTeamMembers);
             }
         }
-
-        const employeeRole = input.select;
         employeeInfo(employeeRole);
     });    
 }

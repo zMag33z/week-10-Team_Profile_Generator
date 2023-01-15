@@ -1,49 +1,26 @@
 const fs = require('fs');
-const documentTop = require('./documentSections');
-const employeeCard = require('./documentSections')
+// const path = require("path");
+// const OUTPUT_DIR = path.resolve(__dirname, "output")
+// const outputPath = path.join(OUTPUT_DIR, "team.html");
+const { documentTop, documentBottom, employeeCard } = require('./documentSections');
 
 
+function generateHTML(ALLroledTeamMembers){
+    let createCardforEACH = ALLroledTeamMembers.map(teamMember => employeeCard(teamMember));
 
-const teamMembers = {
-    set add(thisEmployee) {
-        if(thisEmployee.getRole() === 'Manager') this.added.push(thisEmployee);
-        if(thisEmployee.getRole() === 'Engineer') this.added.splice(1, 0, thisEmployee);
-        if(thisEmployee.getRole() === 'Intern') this.added.push(thisEmployee);
-    },
-    added: []
-}
+    let fullDocument = documentTop;
 
-function generateTeamCard(thisEmployee){
+    let employeeCardSection = createCardforEACH.join('');
 
-    // send off for card processing employeeCard below then push it.
+    fullDocument += employeeCardSection += documentBottom;
 
+    console.log(fullDocument);
 
-    teamMembers.add = thisEmployee;  // Send this employee to setter above to be added.
-    console.log(thisEmployee.getRole());
-    console.log(teamMembers.added);
-
-    
-    employeeCard()
+    return fullDocument;
 }
 
 
-
-let check = function (){
-    let mycheck;
-    return mycheck;
-}
+module.exports =  generateHTML;
 
 
-
-function generateHTML(){
-
-
-
-
-
-    
-}
-
-
-
-module.exports = generateTeamCard;
+/*  zMaG33z  */
