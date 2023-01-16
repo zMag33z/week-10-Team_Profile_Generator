@@ -11,6 +11,7 @@
 - [Getting Started](#getting)
 - [Installations](#installations)
 - [Usage](#usage)
+- [Tests](#tests)
 - [Questions](#questions)
 - [Resources](#resources)
 - [Location](#location)
@@ -60,7 +61,7 @@ node index.js
 
 ![app finished example](./assets/finishedImageSample.png)
 
-**[-Video *coming soon*.](https://google.com)**
+**Walkthrough video [*click here*.](https://drive.google.com/file/d/1HTV8m964FZ4wyOH22kFepxWNp-PtUT4d/view)**
 
 ## Tests:
 
