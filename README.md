@@ -1,8 +1,10 @@
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)<br>
 # **Team Profile Generator**
 
-### Welcome!&nbsp;&nbsp;Looking for a way to auto generate an *Our Team Page* with just simple input?&nbsp;&nbsp;Here it is.&nbsp;&nbsp;This dynamic application will auto process an HTML file based on input provided.&nbsp;&nbsp;Soon you'll have a page to introduce *each member* of your team.<br><br>
+## **& Employee Card Generator**
+<br>
 
+### Welcome!&nbsp;&nbsp;Looking for a way to auto generate an *Our Team Page* with just simple input?&nbsp;&nbsp;Here it is.&nbsp;&nbsp;This dynamic application will auto process an HTML file based on input provided.&nbsp;&nbsp;Soon you'll have a page to view *each member* of your team.&nbsp;&nbsp;Each member section is designed as a card, which in turn can be sent out for badge processing or displayed on the screen of most phones.<br><br>
 
 ### **Table of contents:**
 
@@ -58,19 +60,13 @@ node index.js
 
 ![app finished example](./assets/finishedImageSample.png)
 
--Video and Screenshots *coming soon*.
+**[-Video *coming soon*.](https://google.com)**
 
 ## Tests:
 
 ![tests](https://img.shields.io/badge/tests-passed-brightgreen)
 
 There are four tests to run on Class Objects.  Or you may run all tests at once.
-
-**To TEST ALL Classes.**
--   On the command line, type the example below.
-```shell
-npm test
-```
 
 **1. TEST Class Employee:**
 -   On the command line, type the example below.
@@ -96,7 +92,13 @@ npm run test engineer.test
 npm run test intern.test
 ```
 
-*If console error returns no tests specified.  Check 'package.json' file.  Under "scripts": "test": replace "echo---" with "jest".*
+**To TEST ALL Classes.**
+-   On the command line, type the example below.
+```shell
+npm test
+```
+
+**If console error returns no tests specified.  Check 'package.json' file.  Under "scripts": "test": replace "echo---" with "jest".*
 
 ***test image example***
 
