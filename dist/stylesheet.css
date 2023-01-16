@@ -1,4 +1,5 @@
-
+/* Needs color and backdrop.  Color scheme defined in utilities.css. */
+/* Contained all including header til footer. */
 .contain-all{
     display: flex;
     flex-direction: row;
@@ -9,8 +10,8 @@
     padding-bottom: 120px;
 }
 
+/* Header */
 .team-mission{
-
     padding: 15px 20px;
     margin: 0 auto;
 }
@@ -19,6 +20,7 @@
     font-weight: 500;
 }
 
+/* Employee card Section */
 .card{
     display: inline-block;
     position: relative;
@@ -34,18 +36,16 @@
     padding-top: 20px;
 }
 
+ /* Employee Info */
 .title, .id, .area, .school{
     border-bottom: solid var(--info-border);
     background-color: var(--main-info);
     padding: 10px 0 5px 15px;
 }
-
-/*padding blocks overflow to circle*/
+/*padding blocks overflow into circle*/
 .school{
     padding-right: 35%;
 }
-
-/*Contact Method*/
 .contacts{
     position: absolute;
     left: 0;
@@ -57,17 +57,15 @@
     padding-bottom: 10px;
     text-align: center;
 }
-
 .contact-item{
     display: inline-block;
 }
-
 .contact-icon{
     font-size: 2em;
     color: var(--fontNcircle);
     margin-right: 16px;
 }
-
+/* Card decor */
 /*Image container*/
 .substitute-IMG{
     z-index: 2;
@@ -95,7 +93,30 @@
     background-color: var(--fontNcircle);
     border-radius: 50%;
 }
+/* Company LOGO */
+.top{
+    position: absolute;
+    bottom: 165px;
+    left: 15px;
+    font-size: 32px;
+    color: var(--fontNcircle);
+}
+.bottom{
+    position: absolute;
+    bottom: 155px;
+    left: 35px;
+    font-size: 32px;
+    color: var(--fontNcircle);
+}
+/* Barcode */
+.scan{
+    position: absolute;
+    bottom: 70px;
+    left: 18px;
+    font-size: 80px;
+}
 
+/* Bottom of page positioned to bottom of body(utilities.css). */
 footer{
     position: absolute;
     bottom: 0;
@@ -108,26 +129,4 @@ footer{
 }
 
 
-
-.top{
-    position: absolute;
-    bottom: 165px;
-    left: 15px;
-    font-size: 32px;
-    color: var(--fontNcircle);
-}
-
-.bottom{
-    position: absolute;
-    bottom: 155px;
-    left: 35px;
-    font-size: 32px;
-    color: var(--fontNcircle);
-}
-
-.scan{
-    position: absolute;
-    bottom: 70px;
-    left: 18px;
-    font-size: 80px;
-}
+/*  zMaG33z  */

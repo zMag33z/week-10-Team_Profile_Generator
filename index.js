@@ -6,13 +6,21 @@ console.log(`\x1b[33m
     \x1b[0m`);
 
 
-// Requirements
+// Variables created to use dependencies.
 const inquirer = require('inquirer');
+const fs = require('fs');
+const path = require('path');
+
+// FileSystem path plus filename and function that generates file.
+const path_DIR = path.resolve(__dirname, 'dist');
+const filename = 'Our_Team.html';
+const path_FileName = path.join(path_DIR, filename);
+const generateHTML = require('./src/generateHTML');
+
+// Required files to create Objects with different class names.
 const Manager = require('./lib/manager');
 const Engineer = require ('./lib/engineer');
 const Intern = require ('./lib/intern');
-const generateHTML = require('./src/generateHTML');
-
 
 // Validate and Filter functions
 const requireInput = input => {
@@ -47,7 +55,7 @@ const notIDResetValue = input => {
 };
 
 const emailAddress = input => {
-    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;     // future note: how to test if real email.
+    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;     // future note: run to function so matching variables reduced
     let trueEmail = includes.test(input);
 
     while(!trueEmail){
@@ -58,7 +66,7 @@ const emailAddress = input => {
 }
 
 const notAnEmail = input => {
-    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;     // also i suppose run to function so matching variables reduced
+    let includes = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;     // reduce matching
     let trueEmail = includes.test(input);
 
     if(!trueEmail){
@@ -90,7 +98,7 @@ const isNAN = input => {
 
 
 // Gathered team.
-const ALLroledTeamMembers = [];
+const teamRoster = [];
 
 
 function startBuilding(){
@@ -105,7 +113,7 @@ function startBuilding(){
             console.log(`\n\x1b[41m\x1b[30m Closing application \x1b[0m\x1b[0m\n`);
             return false;
         }
-        let employeeRole = 'Manager';   // Should incorporate more manager roles.  Not all companies have one manager or even a manager at all.  Should set out to be more for each client needs not just one based group.
+        let employeeRole = 'Manager';   // Should incorporate more manager roles.
         employeeInfo(employeeRole);
     });
 }
@@ -134,7 +142,7 @@ function employeeInfo(employeeRole){
             when: () => employeeRole === 'Engineer',
             message: `Select ${employeeRole}'s department field type.`,
             type: 'list',
-            choices: ['Front-End development', 'Back-End development'],
+            choices: ['Front-End Dept', 'Back-End Dept'],
         }
         ,
         {
@@ -170,9 +178,10 @@ function employeeInfo(employeeRole){
             validate: requireInput,
         }
     ]).then(input => {
-            let thisEmployeeInfo = Object.values(input);// gathering only values input by user
+            let thisEmployeeInfo = Object.values(input);// gather only values input by user
             const thisEmployee = eval(`new ${employeeRole}(...thisEmployeeInfo)`);// label each employee with a class name by role.  (eval() executes a string if value is an expression.)
-            ALLroledTeamMembers.push(thisEmployee);
+            teamRoster.push(thisEmployee);
+            console.log(`\n\x1b[32m Added Employee to roster\x1b[0m\n`);
             continueADDorBUILD();
     });
 }
@@ -189,7 +198,7 @@ function continueADDorBUILD(){
     ]).then(input => {
         let employeeRole = input.select;
 
-        switch(employeeRole){       // used switch because switching input value out for new value.
+        switch(employeeRole){       // Switch value depending on selection.
             case `Yes - Add an 'Engineer'`:{
                 employeeRole = 'Engineer';
                 break;
@@ -199,8 +208,8 @@ function continueADDorBUILD(){
                 break;
             }
             case `No - Finished Building`:{
-                // employeeRole = 'APP';
-                return generateHTML(ALLroledTeamMembers);
+                console.log(`\n\x1b[32m BUILDING PAGE \x1b[0m\n`);
+                return syncAndOrsaveFS();
             }
         }
         employeeInfo(employeeRole);
@@ -208,6 +217,19 @@ function continueADDorBUILD(){
 }
 
 
+// Function to write generated PAGE to file.
+function syncAndOrsaveFS(){
+    if (!fs.existsSync(path_DIR)) {
+        fs.mkdirSync(path_DIR)
+    }
+    fs.writeFileSync(path_FileName, generateHTML(teamRoster), "utf-8"); // tried opening to localhost but couldn't get css files to recognize.
+    console.log(`\x1b[32mFile READY.\x1b[0m
+    \x1b[36mTo view file, navigate to directory folder 'dist'.
+    File name created, 'Our_Team.html'.\x1b[0m\n`)
+    }
+
+
 startBuilding();
+
 
 /*  zMaG33z  */

@@ -1,17 +1,4 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-/*parent to footer*/
-body{
-    min-height: 100vh;
-    position: relative;
-    padding: 0 5px;
-}
-
-/*color scheme*/
+/* Color Scheme*/
 :root{
     --fontNcircle: rgb(70, 70, 70);
     --main-info: rgb(234, 234, 234);
@@ -19,23 +6,39 @@ body{
     --info-border: grey;
 }
 
+/* Reset ALL */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Parent to Footer*/
+body{
+    min-height: 100vh;
+    position: relative;
+    padding: 0 5px;
+}
+
+
+/* Custom fonts */
 h1{
     padding: 15px 20px;
 }
-
 h2{
     border-bottom: solid var(--info-border);
     background-color: var(--info-bg);
     font-size: 1.8em;
     padding: 12px 15px;
 }
-
 h3{
     font-size: 1.5em;
     display: inline-block;
 }
-
 p{
     font-size: 1.2em;
     font-weight: bold;
 }
+
+
+/*  zMaG33z  */

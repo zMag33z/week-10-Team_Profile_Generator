@@ -3,7 +3,6 @@
 
 ### Welcome!&nbsp;&nbsp;Looking for a way to auto generate an *Our Team Page* with just simple input?&nbsp;&nbsp;Here it is.&nbsp;&nbsp;This dynamic application will auto process an HTML file based on input provided.&nbsp;&nbsp;Soon you'll have a page to introduce *each member* of your team.<br><br>
 
-## ****Currently Under Construction***
 
 ### **Table of contents:**
 
@@ -57,7 +56,35 @@ node index.js
 
 ## Tests:
 
-***Need to place explanation about testing output in this section.***
+![tests](https://img.shields.io/badge/tests-passed-brightgreen)
+
+There are four tests to run on Class Objects.
+
+**1. Class Employee:**
+-   On the command line, type the example below.
+```shell
+npm run test employee.test
+```
+
+**2. Class Manager extends Employee:**
+-   On the command line, type the example below.
+```shell
+npm run test manager.test
+```
+
+**3. Class Engineer extends Employee:**
+-   On the command line, type the example below.
+```shell
+npm run test engineer.test
+```
+
+**4. Class Intern extends Employee:**
+-   On the command line, type the example below.
+```shell
+npm run test intern.test
+```
+
+*If console error returns no tests specified.  Check 'package.json' file.  Under "scripts": "test": replace "echo---" with "jest".*
 
 ## Questions:
 

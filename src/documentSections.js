@@ -1,4 +1,5 @@
-// Document sections. Top Middle Bottom.
+// Document sections. Top, Middle, Bottom.
+
 
 const documentTop = 
 `
@@ -11,17 +12,15 @@ const documentTop =
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--ICONS.  I personally do not like plugins-->
     <link rel="stylesheet" href="./utilities.css">
     <link rel="stylesheet" href="./stylesheet.css">
-    <title>Document</title>
+    <title>This Team Page</title>
 </head>
 <body>
 
     <div class="contain-all">
 
         <header class="team-mission">
-
             <h1 class="fa-3x">Team Mission</h1>
             <p class="statement">Team mission statement in here to talk about all the things we have accomplished. Why we set out to complete them.  Why we thought it would be a good idea to bring it to anyone who wants to think about what we've done.  Honestly just making some random text to put into the field and lorem episum i have to install and not really wanting to that right now.  Just providing my own text is a little faster.</p>
-
         </header>
 `;
 
@@ -55,14 +54,14 @@ const employeeCard = function (thisEmployee){
 
     let newCard =
 `
-            <div class="card">
+        <div class="card">
 
             <div class="circle"></div>
 
             <h2>${thisEmployee.name}</h2>
 
             <div class="title">
-                <h3>${thisEmployee.getRole()}<i class="${roleIcon}"></i></h3>
+                <h3>${thisEmployee.getRole()}&nbsp;&nbsp;<i class="${roleIcon}"></i></h3>
             </div>
 
             <div class="id">
@@ -89,14 +88,15 @@ const employeeCard = function (thisEmployee){
             </div>
 
         </div>
-    </div>
+
 `;
 return newCard;
 }
 
 
 const documentBottom = 
-`
+`   </div>
+
     <footer>
         <p>Copyright &copy; 2023 by Team Mission.</p>
         <p>All Rights Reserved.</p>
@@ -106,6 +106,9 @@ const documentBottom =
 
 </body>
 </html>
+
+
+<!--    zMaG33z    -->
 `;
 
 
