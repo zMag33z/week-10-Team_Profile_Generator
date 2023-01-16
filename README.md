@@ -52,6 +52,12 @@ Once the above installations are complete, to initalize the application, on the 
 node index.js
 ```
 
+***app image examples***
+
+![app question example](./assets/questionsImageSample.png)
+
+![app finished example](./assets/finishedImageSample.png)
+
 -Video and Screenshots *coming soon*.
 
 ## Tests:
@@ -85,6 +91,10 @@ npm run test intern.test
 ```
 
 *If console error returns no tests specified.  Check 'package.json' file.  Under "scripts": "test": replace "echo---" with "jest".*
+
+***test image example***
+
+![app test example](./assets/testImageSample.png)
 
 ## Questions:
 

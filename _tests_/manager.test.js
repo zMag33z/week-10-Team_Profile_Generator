@@ -48,7 +48,7 @@ describe('Manager', () => {
   });
 
   describe('getOfficeNumber()', () => {
-    it(`Creates key- school: 'input is value' accessed with person.school`, () => {
+    it(`Creates key- officeNumber: 'input is value' accessed with person.officeNumber`, () => {
       let person = new Manager(ManagerName, ManagerID, ManagerEmail, ManagerOffice);
       expect(person.getofficeNumber()).toBe(ManagerOffice);
       expect(person.officeNumber).toBe(ManagerOffice);
