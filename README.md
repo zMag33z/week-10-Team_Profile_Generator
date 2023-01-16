@@ -64,27 +64,33 @@ node index.js
 
 ![tests](https://img.shields.io/badge/tests-passed-brightgreen)
 
-There are four tests to run on Class Objects.
+There are four tests to run on Class Objects.  Or you may run all tests at once.
 
-**1. Class Employee:**
+**To TEST ALL Classes.**
+-   On the command line, type the example below.
+```shell
+npm test
+```
+
+**1. TEST Class Employee:**
 -   On the command line, type the example below.
 ```shell
 npm run test employee.test
 ```
 
-**2. Class Manager extends Employee:**
+**2. TEST Class Manager extends Employee:**
 -   On the command line, type the example below.
 ```shell
 npm run test manager.test
 ```
 
-**3. Class Engineer extends Employee:**
+**3. TEST Class Engineer extends Employee:**
 -   On the command line, type the example below.
 ```shell
 npm run test engineer.test
 ```
 
-**4. Class Intern extends Employee:**
+**4. TEST Class Intern extends Employee:**
 -   On the command line, type the example below.
 ```shell
 npm run test intern.test
